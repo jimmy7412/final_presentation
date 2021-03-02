@@ -1,20 +1,29 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Copied the initial header and outline from the Bootstrap website-->
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- MathJax Import -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
     <title>Final Presentation</title>
   </head>
   <body>
+      <!-- The Front Page -->
     <div class="text-center mt-5 vw-100 vh-100">
         <h1>James Pierce's Final Presentation</h1>
         <h4>By James Pierce</h4>
     </div>
+
+    <!-- Problem Statement -->
     <div class="vw-100 vh-100 container-lg border-top">
         <h2 class="text-center mt-5">Problem</h2>
         <div class="row mt-5">
@@ -25,7 +34,8 @@
                     <li class="mb-3">According to the World Health Organization 18,000 people died between
                         1998 - 2017 from landslides.
                     </li>
-                    <li>This model could be used for quick assessments of world wide landslides, to determine
+                    <li>
+                        This model could be used for quick assessments of world wide landslides, to determine
                         immediate effects and damage estimation.
                     </li>
                 </ul>
@@ -38,13 +48,24 @@
             </div>
         </div>
     </div>
+
+    <!-- Metrics Used -->
     <div class="vw-100 vh-100 container-lg border-top">
         <h2 class="text-center mt-5">Metrics</h2>
         <div class="row mt-5">
             <div class="col-6 fs-4">
                 <ul class="list-unstyled">
-                    <li class="mb-3">Using Total Casualties as a final cost metric, property damage being more difficult to measure world wide.</li>
-                    <li class="mb-3">I take the description text of news reports of the incidences, and attempt the find correllation of the text with casualties.</li>
+                    <li class="mb-3">
+                        Using Total Casualties as a final cost metric, property damage being more difficult to measure
+                        world wide.
+                    </li>
+                    <li class="mb-3">
+                        I take the description text of news reports of the incidences, and attempt the find 
+                        correllation of the text with casualties.
+                    </li>
+                    <li class="mb-3"> 
+                        The model will be considered successful if the R squared score is higher than the null set.
+                    </li>
                 </ul>
             </div>
             <div class="col-6">
@@ -55,6 +76,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Approach and Process -->
     <div class="vw-100 vh-100 container-lg border-top">
         <h2 class="text-center mt-5">Approach and Process</h2>
         <div class="row mt-5">
@@ -71,50 +94,110 @@
                 </ul>
             </div>
             <div class="col-6 fs-4 border-left">
+                <h4>Attempted Approaches</h4>
                 <ul>
-                    <li>
+                    <li class="mb-3">
                         Null Set: 76.4%, if all results are predicted to be zero.
                     </li>
-                    <li>
-                        K Nearest Neighbor Regressor:
+                    <li class="mb-3">
+                        K Nearest Neighbor Regressor plots all of the data into a graph then produces a result by finding the 
+                        labeled points near the test point.
                     </li>
-                    <li>
-                        Multinomial Naive Bayes:
+                    <li class="mb-3">
+                        Multinomial Naive Bayes uses Bayes Theorem to calculate the predicted value.
                     </li>
-                    <li>
-                        Neural Network Multilayer Perceptron Regressor:
+                    <li class="mb-3">
+                        Neural Network Multilayer Perceptron Regressor performs a series of logistic regression and weighted 
+                        logistic regression to arrive at a final result.
                     </li>
-                    <li>
-                        Random Forest:
+                    <li class="mb-3">
+                        Random Forest uses a series of decision trees to arrive at a result.
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+
+    <!-- Used Model and Solutions -->
     <div class="vw-100 vh-100 container-lg border-top">
         <h2 class="text-center mt-5">Model and Solution</h2>
         <div class="row mt-5">
             <div class="col-6 fs-4">
                 <ul class="list-unstyled">
-                    <li>Using Total Casualties as a final cost metric, property damage being more difficult to measure world wide.</li>
-                    <li>I take the description text of news reports of the incidences, and attempt the find correllation of the text with casualties.</li>
+                    <li class="mb-3">None of the attempted models produced an accuaracy that was significantly greater than the Null Set</li>
+                    <li class="mb-3">
+                        The Multi Layer Perceptron and Random Forest Regressor actually produced a near zero result.
+                    </li>
+                    <li class="mb-3">
+                        The model that performed the best was the K Nearest Neighbor which came in at right around the 
+                        Null Set result, the Multinomial Naive Bayes Model came in second, but still slightly lower.
+                    </li>
                 </ul>
             </div>
             <div class="col-6">
-                <figure>
-                    <img src="./images/03022015-oso24-2040x1360.jpg" width="500px" alt="Oso Landslide Credit Seattle Times" />
-                    <figcaption>Oso Landslide, Credit Seattle Times</figcaption>
-                </figure>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Model Type</th>
+                            <th>Score</th>
+                            <th>Score Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Null Set</th>
+                            <td>
+                                76.4%
+                            </td>
+                            <td>Percentage of 0</td>
+                        </tr>
+                        <tr>
+                            <th>K Nearest Neighbor</th>
+                            <td>
+                                ~ .764
+                            </td>
+                            <td>\(R^2\)</td>
+                        </tr>
+                        <tr>
+                            <th>Multinomial Naive Bayes</th>
+                            <td>
+                                ~ .764
+                            </td>
+                            <td>\(R^2\)</td>
+                        </tr>
+                        <tr>
+                            <th>Multi Layer Perceptron</th>
+                            <td>
+                                ~ .000
+                            </td>
+                            <td>\(R^2\)</td>
+                        </tr>
+                        <tr>
+                            <th>Random Forest Regression</th>
+                            <td>
+                                ~ .000
+                            </td>
+                            <td>\(R^2\)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
+    <!-- Proformance Evaluation -->
     <div class="vw-100 vh-100 container-lg border-top">
         <h2 class="text-center mt-5">Proformance Evaluation</h2>
         <div class="row mt-5">
             <div class="col-6 fs-4">
                 <ul class="list-unstyled">
-                    <li>Using Total Casualties as a final cost metric, property damage being more difficult to measure world wide.</li>
-                    <li>I take the description text of news reports of the incidences, and attempt the find correllation of the text with casualties.</li>
+                    <li>Using Total Casualties as a final cost metric, property damage being more difficult to measure 
+                        world wide.
+                    </li>
+                    <li>
+                        I take the description text of news reports of the incidences, 
+                        and attempt the find correllation of the text with casualties.
+                    </li>
                 </ul>
             </div>
             <div class="col-6">
@@ -125,6 +208,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Impact -->
     <div class="vw-100 vh-100 container-lg border-top">
         <h2 class="text-center mt-5">Impact of Findings</h2>
         <div class="row mt-5">
@@ -142,6 +227,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Recommendations and Next Steps -->
     <div class="vw-100 vh-100 container-lg border-top">
         <h2 class="text-center mt-5">Recomdations and Next Steps</h2>
         <div class="row mt-5">
@@ -163,10 +250,16 @@
         <div class="row mb-5">
             <div class="col">
                 <ul>
-                    <li><span><a href="./Notebooks/01-proposal.html">First Notebook</a></span></li>
+                    <li><a href="./Notebooks/01-proposal.html">First Notebook</a></li>
                     <li><a href="./Notebooks/02-EDA.html">Second Notebook</a></li>
                     <li><a href="./Notebooks/03-Modeling.html">Third Notebook</a></li>
                     <li><a href="./Notebooks/04-Final.html">Forth Notebook</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li><a href="https://github.com/jimmy7412/final_presentation" target="_blank">Github Repository for this presentation</a></li>
+                    <li><a href="https://getbootstrap.com" target="_blank">Styling provided by Bootstrap</a></li>
                 </ul>
             </div>
         </div>
