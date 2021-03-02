@@ -43,8 +43,8 @@
         <div class="row mt-5">
             <div class="col-6 fs-4">
                 <ul class="list-unstyled">
-                    <li>Using Total Casualties as a final cost metric, property damage being more difficult to measure world wide.</li>
-                    <li>I take the description text of news reports of the incidences, and attempt the find correllation of the text with casualties.</li>
+                    <li class="mb-3">Using Total Casualties as a final cost metric, property damage being more difficult to measure world wide.</li>
+                    <li class="mb-3">I take the description text of news reports of the incidences, and attempt the find correllation of the text with casualties.</li>
                 </ul>
             </div>
             <div class="col-6">
@@ -60,15 +60,34 @@
         <div class="row mt-5">
             <div class="col-6 fs-4">
                 <ul class="list-unstyled">
-                    <li>Using Total Casualties as a final cost metric, property damage being more difficult to measure world wide.</li>
-                    <li>I take the description text of news reports of the incidences, and attempt the find correllation of the text with casualties.</li>
+                    <li class="mb-3">In order to process the text, Natural Language Processing was used.</li>
+                    <li class="mb-3">However, doing that without tuning produced roughly 500,000 features to process</li>
+                    <li class="mb-3">That many features made fitting models a long process, and greatly slowed down work.</li>
+                    <li class="mb-3">Multiple processes were run in parallel to try and tune the models in a timely manner.</li>
+                    <li class="mb-3">
+                        Some of the tuning procedures used included limiting the number of features, 
+                        and 
+                    </li>
                 </ul>
             </div>
-            <div class="col-6">
-                <figure>
-                    <img src="./images/03022015-oso24-2040x1360.jpg" width="500px" alt="Oso Landslide Credit Seattle Times" />
-                    <figcaption>Oso Landslide, Credit Seattle Times</figcaption>
-                </figure>
+            <div class="col-6 fs-4 border-left">
+                <ul>
+                    <li>
+                        Null Set: 76.4%, if all results are predicted to be zero.
+                    </li>
+                    <li>
+                        K Nearest Neighbor Regressor:
+                    </li>
+                    <li>
+                        Multinomial Naive Bayes:
+                    </li>
+                    <li>
+                        Neural Network Multilayer Perceptron Regressor:
+                    </li>
+                    <li>
+                        Random Forest:
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
