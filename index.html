@@ -19,7 +19,7 @@
   <body>
       <!-- The Front Page -->
     <div class="text-center mt-5 vw-100 vh-100">
-        <h1>James Pierce's Final Presentation</h1>
+        <h1>Predicting Landslide Casualties from Historical News Data</h1>
         <h4>By James Pierce</h4>
     </div>
 
@@ -70,8 +70,8 @@
             </div>
             <div class="col-6">
                 <figure>
-                    <img src="./images/03022015-oso24-2040x1360.jpg" width="500px" alt="Oso Landslide Credit Seattle Times" />
-                    <figcaption>Oso Landslide, Credit Seattle Times</figcaption>
+                    <img src="./images/Screen Shot 2021-03-03 at 12.03.23 PM.png" width="650px" alt="Oso Landslide Credit Seattle Times" />
+                    <figcaption class="text-center">Mt. St. Helens, Credit Washington DNR LIDAR Project</figcaption>
                 </figure>
             </div>
         </div>
@@ -124,13 +124,21 @@
         <div class="row mt-5">
             <div class="col-6 fs-4">
                 <ul class="list-unstyled">
-                    <li class="mb-3">None of the attempted models produced an accuaracy that was significantly greater than the Null Set</li>
+                    <li class="mb-3">
+                        None of the attempted models produced an accuaracy that was significantly greater than the Null Set
+                    </li>
                     <li class="mb-3">
                         The Multi Layer Perceptron and Random Forest Regressor actually produced a near zero result.
                     </li>
                     <li class="mb-3">
                         The model that performed the best was the K Nearest Neighbor which came in at right around the 
                         Null Set result, the Multinomial Naive Bayes Model came in second, but still slightly lower.
+                    </li>
+                    <li class="mb-3">
+                        The introduction of <abbr title="Density Based Spatial Clustering of Applications with Noise">
+                            DBSCAN</abbr> labels significantly slowed progress and produced no appreciable value to the set.
+                            Most of the values were outliers with the default epsilon value of .5, incleasing the value 
+                            resulted in fewer outliers but increased computation time.
                     </li>
                 </ul>
             </div>
@@ -149,7 +157,7 @@
                             <td>
                                 76.4%
                             </td>
-                            <td>Percentage of 0</td>
+                            <td>Percentage of 0s</td>
                         </tr>
                         <tr>
                             <th>K Nearest Neighbor</th>
@@ -161,7 +169,7 @@
                         <tr>
                             <th>Multinomial Naive Bayes</th>
                             <td>
-                                ~ .764
+                                ~ .7531
                             </td>
                             <td>\(R^2\)</td>
                         </tr>
@@ -191,20 +199,28 @@
         <div class="row mt-5">
             <div class="col-6 fs-4">
                 <ul class="list-unstyled">
-                    <li>Using Total Casualties as a final cost metric, property damage being more difficult to measure 
-                        world wide.
+                    <li class="mb-3">
+                        The models did not perform up to overall expectations.
                     </li>
-                    <li>
-                        I take the description text of news reports of the incidences, 
-                        and attempt the find correllation of the text with casualties.
+                    <li class="mb-3">
+                        With the dataset used a usable model was not able to be created.
+                    </li>
+                    <li class="mb-3">
+                        Although the \(R^2\) score for the K Nearest Neighbors Regressor was somewhat high
+                        it did not perform to a level above base line.
+                    </li>
+                    <li class="mb-3">
+                        Continued evaluation was slowed due to the size of the dataset. 
+                    </li>
+                    <li class="mb-3">
+                        One Attempt on Azure was halted due to needing 8GB of space to run clustering,
+                        and 12GB to run K Nearest Neighbors.
                     </li>
                 </ul>
             </div>
             <div class="col-6">
-                <figure>
-                    <img src="./images/03022015-oso24-2040x1360.jpg" width="500px" alt="Oso Landslide Credit Seattle Times" />
-                    <figcaption>Oso Landslide, Credit Seattle Times</figcaption>
-                </figure>
+                <p class="mb-5 mt-5">\[R^2 = \frac{\frac{1}{n}\sum_{i=1}^n(y_i - f(x))^2}{\frac{1}{n}\sum_{i=1}^n(y_i - \bar{y})^2}\]</p>
+                <p>\[Null = \frac{Number of Zeros}{Total Rows}\]</p>
             </div>
         </div>
     </div>
@@ -215,8 +231,40 @@
         <div class="row mt-5">
             <div class="col-6 fs-4">
                 <ul class="list-unstyled">
-                    <li>Using Total Casualties as a final cost metric, property damage being more difficult to measure world wide.</li>
-                    <li>I take the description text of news reports of the incidences, and attempt the find correllation of the text with casualties.</li>
+                    <li class="mb-3">The impact of this model would be effective in immediate classification of news reports.</li>
+                    <li class="mb-3">It could be used to provide alerts and begin preparation of resources 
+                        and begin evacuations.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <figure>
+                    <img src="./images/1406422-2040x1358.jpg" width="650px" alt="Oso Landslide Credit Seattle Times" />
+                    <figcaption class="text-center">Post Mt. St. Helens Eruption, Credit Seattle Times</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendations and Next Steps -->
+    <div class="vw-100 vh-100 container-lg border-top">
+        <h2 class="text-center mt-5">Recommendations and Next Steps</h2>
+        <div class="row mt-5">
+            <div class="col-6 fs-4">
+                <h3>Dealing with size</h3>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        The size of the features became a problem after adding Natural Language Processing,
+                        Having ~500,000 features created a significantly slower process. This also used 
+                        resources on the computer it was run on, causing it to get hot and make the fan run constantly. 
+                    </li>
+                    <li class="mb-3">
+                        A potential path forward would be to offload this on to a cloud environment. By Creating a 
+                        pipeline data could be fed in by an API, and results could be sent to a remote location.
+                    </li>
+                    <li class="mb-3">
+                        On 
+                    </li>
                 </ul>
             </div>
             <div class="col-6">
@@ -228,37 +276,63 @@
         </div>
     </div>
 
-    <!-- Recommendations and Next Steps -->
+
     <div class="vw-100 vh-100 container-lg border-top">
-        <h2 class="text-center mt-5">Recomdations and Next Steps</h2>
+        <h2 class="text-center mt-5">Azure Test Run</h2>
         <div class="row mt-5">
-            <div class="col-6 fs-4">
-                <ul class="list-unstyled">
-                    <li>Using Total Casualties as a final cost metric, property damage being more difficult to measure world wide.</li>
-                    <li>I take the description text of news reports of the incidences, and attempt the find correllation of the text with casualties.</li>
-                </ul>
-            </div>
             <div class="col-6">
                 <figure>
-                    <img src="./images/03022015-oso24-2040x1360.jpg" width="500px" alt="Oso Landslide Credit Seattle Times" />
-                    <figcaption>Oso Landslide, Credit Seattle Times</figcaption>
+                    <img src="./images/costanalysis_charts.png" width="500px" alt="Oso Landslide Credit Seattle Times" />
+                    <figcaption>Azure cost for a few hours</figcaption>
                 </figure>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <ul class="fs-4">
+                        <li class="mb-3">The cost is only $0.27 for a few hours of work, and the free tier covers the cost.</li>
+                        <li class="mb-3">Most of the cost came from storage.</li>
+                        <li class="mb-3">I don't fully understand the pricing model for Azure</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <figure>
+                        <img src="./images/cost_breakdown.png" width="500px" alt="Oso Landslide Credit Seattle Times" />
+                        <figcaption>Azure cost breakdown for a few hours</figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
     <div class="container mb-5 border-top">
         <div class="row mb-5">
-            <div class="col">
-                <ul>
-                    <li><a href="./Notebooks/01-proposal.html">First Notebook</a></li>
-                    <li><a href="./Notebooks/02-EDA.html">Second Notebook</a></li>
-                    <li><a href="./Notebooks/03-Modeling.html">Third Notebook</a></li>
-                    <li><a href="./Notebooks/04-Final.html">Forth Notebook</a></li>
-                </ul>
+            <div class="col-8">
+                <div class="row">
+                    <h5 class="text-center">Notebooks and Data</h6>
+                        <div class="col">
+                            <h6 class="text-center">Annotated Notebooks</h6>
+                            <ul>
+                                <li><a href="./Global_Landslide_Catalog_Export.csv">Dataset</a></li>
+                                <li><a href="./Notebooks/01-proposal.html">First Notebook</a></li>
+                                <li><a href="./Notebooks/02-EDA.html">Second Notebook</a></li>
+                                <li><a href="./Notebooks/03-Modeling.html">Third Notebook</a></li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <h6 class="text-center">Nonannotated Notebooks</h6>
+                            <ul>
+                                <li><a href="./Notebooks/04-Final.html">Forth Notebook</a></li>
+                                <li><a href="./Notebooks/04-Final-Mulitnomial.html">Multinomial Notebook</a></li>
+                            </ul>
+                        </div>
+                </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <ul>
-                    <li><a href="https://github.com/jimmy7412/final_presentation" target="_blank">Github Repository for this presentation</a></li>
+                    <li><a href="https://github.com/jimmy7412/final_presentation" target="_blank">
+                        Github Repository for this presentation
+                    </a></li>
                     <li><a href="https://getbootstrap.com" target="_blank">Styling provided by Bootstrap</a></li>
                 </ul>
             </div>
